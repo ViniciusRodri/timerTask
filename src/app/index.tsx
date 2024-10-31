@@ -19,7 +19,7 @@ export default function Index() {
   };
 
   return (
-    <View className="flex flex-col bg-lightGray gap-5">
+    <View className="flex flex-col bg-lightGray gap-5 h-full">
       <View
         className="flex flex-row items-center justify-between px-4"
         style={{ marginTop: statusBarHeight + 40 }}

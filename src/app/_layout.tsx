@@ -13,8 +13,8 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-gesture-handler";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -38,8 +38,9 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView>
+    <>
+      {/* <StatusBar className="bg-lightGray" /> */}
       <Slot />
-    </GestureHandlerRootView>
+    </>
   );
 }
