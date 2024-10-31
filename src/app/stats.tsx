@@ -4,6 +4,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Constants from "expo-constants";
 import Title from "../components/Header/title";
 import CardProd from "../components/Cards/produtivity";
+import { SlideTab } from "../components/SlideTab";
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -28,6 +29,10 @@ export default function Stats() {
       <View className="flex flex-row">
         <CardProd type="task" />
         <CardProd />
+      </View>
+
+      <View className="flex flex-row items-center justify-center">
+        <SlideTab />
       </View>
     </View>
   );

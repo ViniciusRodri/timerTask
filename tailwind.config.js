@@ -17,7 +17,9 @@ module.exports = {
         white: "#FFFFFF",
         pinkLight: "#FFEFF1",
         purpleLight: "#F5EEFC",
+        lightPurple: "#E9E9FF",
         black: "#070417",
+        lightBlack: "#8f8da2",
       },
       fontFamily: {
         rubikLight: ["Rubik_300Light"],
