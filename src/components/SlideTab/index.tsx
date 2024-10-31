@@ -54,8 +54,8 @@ export function SlideTab() {
 
   return (
     <View className="flex-1">
-      <View className="w-[279px] mx-auto">
-        <View className="flex-row mt-10 mb-5 relative h-14 bg-purpleLight p-2 rounded-xl">
+      <View className="w-full justify-center items-center">
+        <View className=" w-[279px] flex-row mt-10 mb-5 relative h-14 bg-purpleLight p-2 rounded-xl">
           <Animated.View
             className="absolute w-1/2 h-full top-0 left-0"
             style={{
