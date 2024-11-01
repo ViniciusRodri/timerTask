@@ -96,7 +96,7 @@ export function SlideTab() {
           >
             <Text
               className={`font-rubikMedium text-base text-left ${
-                active === 0 ? "text-black" : "text-lightBlack"
+                active === 1 ? "text-black" : "text-lightBlack"
               }`}
             >
               Week
