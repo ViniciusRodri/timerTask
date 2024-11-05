@@ -5,14 +5,16 @@ interface InputProps {
   placeholder: string;
 }
 
-export function Input({ label, placeholder }: InputProps) {
+export function TextArea({ label, placeholder }: InputProps) {
   return (
     <View className="flex flex-col gap-1 p-2">
       <Text className="font-rubikRegular text-base text-left text-dark">
         {label}*
       </Text>
       <TextInput
-        // autoFocus={true}
+        style={{ textAlignVertical: "top" }}
+        multiline={true}
+        numberOfLines={8}
         className="font-rubikRegular bg-input rounded drop-shadow-sm p-2.5"
         placeholder={placeholder}
       />

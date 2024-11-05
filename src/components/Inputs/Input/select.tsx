@@ -24,9 +24,10 @@ const items: Item[] = [
 
 interface SelectProps {
   label: string;
+  create: string;
 }
 
-export default function Select({ label }: SelectProps) {
+export default function Select({ label, create }: SelectProps) {
   const [selectedItems, setSelectedItems] = useState<Item[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -40,7 +41,7 @@ export default function Select({ label }: SelectProps) {
   };
 
   const handleInputFocus = () => {
-    setDropdownVisible(true);
+    setDropdownVisible((prev) => !prev);
   };
 
   return (
@@ -50,10 +51,15 @@ export default function Select({ label }: SelectProps) {
       </Text>
       <View className="flex">
         <View
-          className="font-rubikRegular bg-input rounded drop-shadow-sm p-2.5"
+          className=" font-rubikRegular bg-input min-h-11 rounded drop-shadow-sm p-2.5 items-center justify-between"
           style={{ flexDirection: "row", flexWrap: "wrap" }}
           onTouchStart={handleInputFocus}
         >
+          {selectedItems.length === 0 && (
+            <Text className="font-rubikRegular text-lightBlack text-base text-left">
+              Selecione as categorias...
+            </Text>
+          )}
           {selectedItems.map((item, index) => (
             <View
               key={index}
@@ -65,6 +71,13 @@ export default function Select({ label }: SelectProps) {
               </TouchableOpacity>
             </View>
           ))}
+          <View className="items-center justify-end ">
+            {dropdownVisible ? (
+              <AntDesign name="caretup" size={13} color="#8f8da2" />
+            ) : (
+              <AntDesign name="caretdown" size={13} color="#8f8da2" />
+            )}
+          </View>
         </View>
       </View>
       {dropdownVisible && (
@@ -80,9 +93,9 @@ export default function Select({ label }: SelectProps) {
                 }}
               >
                 <Text
-                  className={
-                    selectedItems.includes(item) ? "text-purple" : "text-black"
-                  }
+                  className={`font-rubikRegular text-dark text-base text-left ${
+                    selectedItems.includes(item) ? "text-purple" : "text-dark"
+                  }`}
                 >
                   {item.name}
                 </Text>
@@ -91,6 +104,9 @@ export default function Select({ label }: SelectProps) {
           </ScrollView>
         </View>
       )}
+      <TouchableOpacity>
+        <Text className="text-blue text-sm">{create}</Text>
+      </TouchableOpacity>
     </View>
   );
 }
