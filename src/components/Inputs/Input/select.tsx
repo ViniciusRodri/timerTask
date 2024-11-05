@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-} from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import work from "../../../../assets/icons/iconsWhite/code-slash.png";
+import gym from "../../../../assets/icons/iconsWhite/barbell.png";
+import study from "../../../../assets/icons/iconsWhite/barbell.png";
+import read from "../../../../assets/icons/iconsWhite/desktop.png";
 
 interface Item {
   id: string;
   name: string;
   icon: any;
+  color: string;
 }
 
 const items: Item[] = [
-  { id: "1", name: "Work", icon: "work" },
-  { id: "2", name: "Gym", icon: "study" },
-  { id: "3", name: "Study", icon: "study" },
-  { id: "4", name: "Read", icon: "read" },
+  { id: "1", name: "Work", icon: work, color: "#3D4ABA" },
+  { id: "2", name: "Gym", icon: gym, color: "#07E092" },
+  { id: "3", name: "Study", icon: study, color: "#070417" },
+  { id: "4", name: "Read", icon: read, color: "#FD5B71" },
 ];
 
 interface SelectProps {
@@ -65,7 +64,7 @@ export default function Select({ label, create }: SelectProps) {
               key={index}
               className="bg-purple rounded-full px-3 py-1 mr-2 flex flex-row items-center"
             >
-              <Text className="text-white mr-1">{item.name}</Text>
+              <Text className="text-white mr-1">{item.name}ds</Text>
               <TouchableOpacity onPress={() => handleSelectItem(item)}>
                 <Feather name="x" size={16} color="white" />
               </TouchableOpacity>
@@ -86,12 +85,21 @@ export default function Select({ label, create }: SelectProps) {
             {items.map((item) => (
               <TouchableOpacity
                 key={item.id}
-                className="p-2 border-b border-lightGray"
+                className="flex flex-row gap-1.5 items-center p-2 border-b border-lightGray"
                 onPress={() => {
                   handleSelectItem(item);
                   setDropdownVisible(false);
                 }}
               >
+                <View
+                  className="rounded-full p-1 items-center justify-center"
+                  style={{
+                    backgroundColor: `${item.color}`,
+                  }}
+                >
+                  <Image source={item.icon} className="size-4" />
+                </View>
+
                 <Text
                   className={`font-rubikRegular text-dark text-base text-left ${
                     selectedItems.includes(item) ? "text-purple" : "text-dark"
